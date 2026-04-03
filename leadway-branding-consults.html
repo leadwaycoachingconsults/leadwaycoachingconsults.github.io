@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leadway Branding Consults — Coach Victoria</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-pale: #F5EDD4;
+    --deep: #1A1205;
+    --dark: #2C1F08;
+    --mid: #5C4A1E;
+    --body: #3D3020;
+    --cream: #FAF6ED;
+    --white: #FFFFFF;
+    --accent: #8B1A1A;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--body);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26, 18, 5, 0.96);
+    backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 6vw; height: 72px;
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+  .nav-logo span { display: block; font-size: 0.6rem; font-family: 'DM Sans', sans-serif; font-weight: 400; color: rgba(201,168,76,0.6); letter-spacing: 0.15em; text-transform: uppercase; }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(250,246,237,0.8);
+    text-decoration: none;
+    font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold); color: var(--deep);
+    padding: 0.55rem 1.4rem; border-radius: 4px;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* ── PAGE SYSTEM ── */
+  .page { display: none; padding-top: 72px; }
+  .page.active { display: block; }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold); color: var(--deep);
+    padding: 1rem 2.5rem; border-radius: 4px;
+    font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    display: inline-block;
+    border: 2px solid var(--gold); color: var(--gold);
+    padding: 0.9rem 2.2rem; border-radius: 4px;
+    font-weight: 600; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; background: transparent; cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background: var(--gold); color: var(--deep); }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    display: inline-block;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); border-left: 3px solid var(--gold);
+    padding-left: 0.75rem; margin-bottom: 1rem;
+  }
+
+  /* ════════════════════════════════
+     HOME PAGE
+  ════════════════════════════════ */
+  #home .hero {
+    min-height: calc(100vh - 72px);
+    background: var(--deep);
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 70% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(circle at 10% 80%, rgba(139,26,26,0.12) 0%, transparent 50%);
+  }
+
+  .hero-grid-overlay {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    padding: 8vw 5vw 8vw 8vw;
+    position: relative; z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 32px; height: 2px; background: var(--gold);
+  }
+
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+    font-weight: 900; line-height: 1.1;
+    color: var(--white); margin-bottom: 1.8rem;
+  }
+  .hero-headline .gold { color: var(--gold); }
+  .hero-headline em { font-style: italic; color: var(--gold-light); }
+
+  .hero-sub {
+    font-size: 1.05rem; line-height: 1.75;
+    color: rgba(250,246,237,0.72);
+    max-width: 480px; margin-bottom: 2.5rem;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+
+  .hero-stat-row {
+    display: flex; gap: 2.5rem;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding-top: 2rem;
+  }
+  .hero-stat { }
+  .hero-stat .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--gold);
+    line-height: 1;
+  }
+  .hero-stat .label {
+    font-size: 0.75rem; color: rgba(250,246,237,0.5);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.3rem;
+  }
+
+  .hero-visual {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+    padding: 6vw 6vw 6vw 2vw;
+  }
+
+  .hero-card {
+    background: linear-gradient(145deg, rgba(44,31,8,0.9), rgba(26,18,5,0.95));
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
+    width: 100%; max-width: 400px;
+    position: relative;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.1);
+  }
+  .hero-card::before {
+    content: '';
+    position: absolute; top: -1px; left: 30px; right: 30px; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    border-radius: 0 0 4px 4px;
+  }
+
+  .hero-card-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-style: italic; font-weight: 400;
+    color: var(--gold-light); line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+
+  .hero-card-attr {
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-card-avatar {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700;
+    color: var(--white); flex-shrink: 0;
+  }
+  .hero-card-name { font-weight: 700; color: var(--white); font-size: 0.95rem; }
+  .hero-card-title { font-size: 0.78rem; color: rgba(201,168,76,0.7); margin-top: 0.1rem; }
+
+  .hero-card-badges {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem;
+  }
+  .badge {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.3rem 0.7rem; border-radius: 100px;
+    background: rgba(201,168,76,0.15); color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+
+  /* Social Proof Bar */
+  .proof-bar {
+    background: var(--dark);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    padding: 1.2rem 8vw;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  }
+  .proof-bar .proof-item {
+    font-size: 0.78rem; color: rgba(250,246,237,0.55);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .proof-bar .proof-item::before { content: '✦'; color: var(--gold); font-size: 0.6rem; }
+
+  /* Intro Section */
+  .intro-section {
+    padding: 8rem 8vw;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+  }
+
+  .intro-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700;
+    color: var(--deep); line-height: 1.2; margin-bottom: 1.5rem;
+  }
+  .intro-text p {
+    font-size: 1rem; line-height: 1.85; color: var(--body);
+    margin-bottom: 1.2rem;
+  }
+  .intro-text p strong { color: var(--dark); font-weight: 600; }
+
+  .intro-callout {
+    background: var(--deep); border-radius: 12px; padding: 2.5rem;
+    position: relative; overflow: hidden;
+  }
+  .intro-callout::after {
+    content: '"';
+    position: absolute; right: 1.5rem; top: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 10rem; line-height: 1; color: rgba(201,168,76,0.1);
+    pointer-events: none;
+  }
+  .intro-callout blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-style: italic; font-weight: 400;
+    color: var(--gold-light); line-height: 1.55;
+    position: relative; z-index: 1;
+  }
+  .intro-callout cite {
+    display: block; margin-top: 1.2rem;
+    font-family: 'DM Sans', sans-serif; font-style: normal;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(201,168,76,0.6);
+  }
+
+  /* Services Preview */
+  .services-preview {
+    background: var(--deep); padding: 8rem 8vw;
+  }
+  .section-header { text-align: center; margin-bottom: 4rem; }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700;
+    color: var(--white); line-height: 1.2; margin-bottom: 1rem;
+  }
+  .section-header p { font-size: 1rem; color: rgba(250,246,237,0.6); max-width: 540px; margin: 0 auto; line-height: 1.75; }
+
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+
+  .service-card {
+    background: rgba(44,31,8,0.5);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 12px; padding: 2.5rem 2rem;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: pointer;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .service-card:hover { border-color: rgba(201,168,76,0.5); transform: translateY(-6px); }
+  .service-card:hover::before { opacity: 1; }
+
+  .service-icon {
+    width: 56px; height: 56px; border-radius: 12px;
+    background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; margin-bottom: 1.5rem;
+  }
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; font-weight: 700; color: var(--white);
+    margin-bottom: 0.8rem;
+  }
+  .service-card p { font-size: 0.9rem; color: rgba(250,246,237,0.6); line-height: 1.75; }
+
+  .services-cta { text-align: center; margin-top: 3.5rem; }
+
+  /* CTA Strip */
+  .cta-strip {
+    background: linear-gradient(135deg, var(--gold) 0%, #A07830 100%);
+    padding: 6rem 8vw;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-strip::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(0,0,0,0.12) 0%, transparent 50%);
+  }
+  .cta-strip h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700;
+    color: var(--deep); line-height: 1.2;
+    margin-bottom: 1rem; position: relative;
+  }
+  .cta-strip p {
+    font-size: 1rem; color: rgba(26,18,5,0.75);
+    max-width: 480px; margin: 0 auto 2rem; line-height: 1.7;
+    position: relative;
+  }
+  .btn-dark {
+    display: inline-block;
+    background: var(--deep); color: var(--gold);
+    padding: 1rem 2.5rem; border-radius: 4px;
+    font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    position: relative;
+  }
+  .btn-dark:hover { background: var(--dark); transform: translateY(-2px); }
+
+  /* ════════════════════════════════
+     ABOUT PAGE
+  ════════════════════════════════ */
+  #about .about-hero {
+    background: var(--deep); padding: 8rem 8vw 6rem;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  #about .about-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center top, rgba(201,168,76,0.1) 0%, transparent 60%);
+  }
+  #about .about-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900;
+    color: var(--white); line-height: 1.1; margin-bottom: 1rem;
+    position: relative;
+  }
+  #about .about-hero p {
+    font-size: 1.05rem; color: rgba(250,246,237,0.65);
+    max-width: 520px; margin: 0 auto; line-height: 1.75;
+    position: relative;
+  }
+
+  .about-bio {
+    padding: 8rem 8vw;
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 6rem; align-items: start;
+  }
+
+  .bio-visual {
+    position: sticky; top: 100px;
+  }
+
+  .bio-photo-frame {
+    background: linear-gradient(145deg, var(--dark), var(--deep));
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 16px; padding: 2.5rem;
+    text-align: center;
+  }
+  .bio-avatar-large {
+    width: 160px; height: 160px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--accent) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 700;
+    color: var(--white); margin: 0 auto 1.5rem;
+    box-shadow: 0 0 0 6px rgba(201,168,76,0.15), 0 0 0 12px rgba(201,168,76,0.06);
+  }
+  .bio-photo-frame h3 {
+    font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700;
+    color: var(--white); margin-bottom: 0.3rem;
+  }
+  .bio-photo-frame p { font-size: 0.8rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .bio-stats-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    margin-top: 2rem; border: 1px solid rgba(201,168,76,0.2); border-radius: 10px; overflow: hidden;
+  }
+  .bio-stat-item {
+    background: rgba(44,31,8,0.4); padding: 1.2rem;
+    text-align: center;
+  }
+  .bio-stat-item .n { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--gold); }
+  .bio-stat-item .l { font-size: 0.7rem; color: rgba(250,246,237,0.5); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
+
+  .bio-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700;
+    color: var(--deep); line-height: 1.2; margin-bottom: 1.5rem;
+  }
+  .bio-content p {
+    font-size: 1rem; line-height: 1.9; color: var(--body); margin-bottom: 1.4rem;
+  }
+  .bio-content p strong { color: var(--dark); font-weight: 600; }
+
+  .bio-content .highlight-box {
+    background: var(--dark); border-radius: 10px; padding: 2rem;
+    margin: 2rem 0; border-left: 4px solid var(--gold);
+  }
+  .bio-content .highlight-box p { color: rgba(250,246,237,0.8); margin: 0; }
+
+  .credentials { padding: 6rem 8vw; background: var(--dark); }
+  .credentials h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--white);
+    margin-bottom: 3rem; text-align: center;
+  }
+  .cred-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .cred-card {
+    background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 10px; padding: 2rem 1.5rem; text-align: center;
+  }
+  .cred-card .icon { font-size: 2rem; margin-bottom: 1rem; }
+  .cred-card h4 { font-size: 0.85rem; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+  .cred-card p { font-size: 0.82rem; color: rgba(250,246,237,0.55); line-height: 1.6; }
+
+  /* ════════════════════════════════
+     SERVICES PAGE
+  ════════════════════════════════ */
+  #services .services-hero {
+    background: var(--deep); padding: 8rem 8vw 6rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  #services .services-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center top, rgba(201,168,76,0.08) 0%, transparent 60%);
+  }
+  #services .services-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900;
+    color: var(--white); line-height: 1.1; margin-bottom: 1rem;
+    position: relative;
+  }
+  #services .services-hero p {
+    font-size: 1.05rem; color: rgba(250,246,237,0.65);
+    max-width: 520px; margin: 0 auto; line-height: 1.75;
+    position: relative;
+  }
+
+  .service-detail {
+    padding: 7rem 8vw;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+  .service-detail.reverse { direction: rtl; }
+  .service-detail.reverse > * { direction: ltr; }
+  .service-detail:last-of-type { border-bottom: none; }
+
+  .service-detail-text .service-num {
+    font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900;
+    color: rgba(201,168,76,0.12); line-height: 1; margin-bottom: 0.5rem;
+    display: block;
+  }
+  .service-detail-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.8vw, 2.4rem); font-weight: 700;
+    color: var(--deep); line-height: 1.2; margin-bottom: 1.2rem;
+  }
+  .service-detail-text p {
+    font-size: 1rem; line-height: 1.85; color: var(--body); margin-bottom: 1.2rem;
+  }
+
+  .service-includes {
+    margin-top: 1.5rem; margin-bottom: 2rem;
+  }
+  .service-includes h4 {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--mid); margin-bottom: 0.8rem;
+  }
+  .include-item {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    padding: 0.5rem 0; font-size: 0.9rem; color: var(--body);
+  }
+  .include-item::before { content: '✦'; color: var(--gold); font-size: 0.55rem; margin-top: 0.25rem; flex-shrink: 0; }
+
+  .service-visual-block {
+    background: var(--deep); border-radius: 16px;
+    padding: 3rem; border: 1px solid rgba(201,168,76,0.2);
+    position: relative; overflow: hidden;
+  }
+  .service-visual-block::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .service-visual-icon { font-size: 3.5rem; margin-bottom: 1.5rem; }
+  .service-visual-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 1rem;
+  }
+  .service-visual-block p {
+    font-size: 0.9rem; color: rgba(250,246,237,0.6); line-height: 1.75;
+    margin-bottom: 1.2rem;
+  }
+
+  .price-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.15); color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 0.5rem 1.2rem; border-radius: 100px;
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+  }
+
+  /* ════════════════════════════════
+     TESTIMONIALS PAGE
+  ════════════════════════════════ */
+  #testimonials .testi-hero {
+    background: var(--deep); padding: 8rem 8vw 6rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  #testimonials .testi-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 60%);
+  }
+  #testimonials .testi-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900;
+    color: var(--white); line-height: 1.1; margin-bottom: 1rem;
+    position: relative;
+  }
+  #testimonials .testi-hero p {
+    font-size: 1.05rem; color: rgba(250,246,237,0.65);
+    max-width: 520px; margin: 0 auto; line-height: 1.75;
+    position: relative;
+  }
+
+  .testimonials-grid {
+    padding: 7rem 8vw;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+
+  .testi-card {
+    background: var(--white);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 14px; padding: 2.5rem 2rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .testi-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(44,31,8,0.12); }
+  .testi-card::after {
+    content: '"';
+    position: absolute; right: 1.2rem; top: 0.5rem;
+    font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900;
+    color: rgba(201,168,76,0.12); line-height: 1;
+  }
+  .testi-card.featured {
+    background: var(--deep); grid-column: span 2;
+  }
+  .testi-card.featured .testi-text { color: rgba(250,246,237,0.8); }
+  .testi-card.featured .testi-name { color: var(--white); }
+  .testi-card.featured .testi-role { color: rgba(201,168,76,0.7); }
+  .testi-card.featured::after { color: rgba(201,168,76,0.08); }
+
+  .testi-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+  .testi-text {
+    font-size: 0.95rem; line-height: 1.8; color: var(--body);
+    margin-bottom: 1.8rem; position: relative; z-index: 1;
+  }
+  .testi-card.featured .testi-text { font-size: 1.05rem; }
+  .testi-person { display: flex; align-items: center; gap: 0.9rem; }
+  .testi-avatar {
+    width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--gold), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700;
+    color: var(--white);
+  }
+  .testi-name { font-weight: 700; font-size: 0.9rem; color: var(--dark); }
+  .testi-role { font-size: 0.78rem; color: var(--mid); margin-top: 0.1rem; }
+
+  .results-strip {
+    background: var(--gold); padding: 5rem 8vw;
+  }
+  .results-strip h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700;
+    color: var(--deep); text-align: center; margin-bottom: 3rem;
+  }
+  .results-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .result-item { text-align: center; }
+  .result-item .rn {
+    font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 900;
+    color: var(--deep); line-height: 1;
+  }
+  .result-item .rl {
+    font-size: 0.8rem; font-weight: 600; color: rgba(26,18,5,0.65);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.5rem;
+  }
+
+  /* ════════════════════════════════
+     CONTACT PAGE
+  ════════════════════════════════ */
+  #contact .contact-hero {
+    background: var(--deep); padding: 8rem 8vw 6rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  #contact .contact-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 60%);
+  }
+  #contact .contact-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900;
+    color: var(--white); line-height: 1.1; margin-bottom: 1rem; position: relative;
+  }
+  #contact .contact-hero p {
+    font-size: 1.05rem; color: rgba(250,246,237,0.65);
+    max-width: 520px; margin: 0 auto; line-height: 1.75; position: relative;
+  }
+
+  .contact-body {
+    padding: 7rem 8vw;
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start;
+  }
+
+  .contact-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--deep); margin-bottom: 1rem;
+  }
+  .contact-info > p {
+    font-size: 0.97rem; line-height: 1.85; color: var(--body); margin-bottom: 2.5rem;
+  }
+
+  .contact-channels { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 3rem; }
+  .channel {
+    display: flex; align-items: center; gap: 1.2rem;
+    padding: 1.2rem 1.5rem; border-radius: 10px;
+    background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.15);
+  }
+  .channel-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--deep); display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; flex-shrink: 0;
+  }
+  .channel-label { font-size: 0.72rem; font-weight: 600; color: var(--mid); text-transform: uppercase; letter-spacing: 0.1em; }
+  .channel-value { font-size: 0.92rem; font-weight: 600; color: var(--dark); margin-top: 0.15rem; }
+
+  .contact-quote {
+    background: var(--deep); border-radius: 12px; padding: 2.5rem;
+    border-left: 4px solid var(--gold);
+  }
+  .contact-quote p {
+    font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic;
+    color: var(--gold-light); line-height: 1.6; margin-bottom: 0.8rem;
+  }
+  .contact-quote cite { font-style: normal; font-size: 0.78rem; color: rgba(201,168,76,0.6); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* Form */
+  .contact-form-wrap {
+    background: var(--white); border-radius: 16px;
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 3rem; box-shadow: 0 20px 60px rgba(44,31,8,0.08);
+  }
+  .contact-form-wrap h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 700; color: var(--deep);
+    margin-bottom: 0.5rem;
+  }
+  .contact-form-wrap > p {
+    font-size: 0.88rem; color: var(--mid); margin-bottom: 2rem;
+  }
+
+  .form-group { margin-bottom: 1.4rem; }
+  .form-group label {
+    display: block; font-size: 0.78rem; font-weight: 600;
+    color: var(--dark); text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: 0.9rem 1.1rem; border-radius: 6px;
+    border: 1.5px solid rgba(201,168,76,0.25);
+    background: var(--cream); color: var(--dark);
+    font-family: 'DM Sans', sans-serif; font-size: 0.92rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none; appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+  }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-submit {
+    width: 100%; padding: 1.1rem;
+    background: var(--gold); color: var(--deep);
+    border: none; border-radius: 6px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .form-note {
+    text-align: center; margin-top: 1rem;
+    font-size: 0.75rem; color: var(--mid);
+  }
+
+  .success-message {
+    display: none; text-align: center; padding: 2rem;
+  }
+  .success-message .checkmark {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: rgba(201,168,76,0.15); border: 2px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; margin: 0 auto 1rem;
+  }
+  .success-message h4 {
+    font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700;
+    color: var(--deep); margin-bottom: 0.5rem;
+  }
+  .success-message p { font-size: 0.92rem; color: var(--mid); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 4rem 8vw 2.5rem;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem;
+    padding-bottom: 3rem; border-bottom: 1px solid rgba(201,168,76,0.12);
+    margin-bottom: 2rem;
+  }
+  .footer-brand .logo {
+    font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700;
+    color: var(--gold); margin-bottom: 0.4rem;
+  }
+  .footer-brand .tagline {
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em;
+    color: rgba(201,168,76,0.5); margin-bottom: 1rem;
+  }
+  .footer-brand p { font-size: 0.85rem; color: rgba(250,246,237,0.45); line-height: 1.7; }
+  .footer-col h5 {
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.15em; color: rgba(201,168,76,0.7); margin-bottom: 1.2rem;
+  }
+  .footer-col a {
+    display: block; text-decoration: none;
+    font-size: 0.85rem; color: rgba(250,246,237,0.45);
+    margin-bottom: 0.6rem; transition: color 0.2s; cursor: pointer;
+  }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.78rem; color: rgba(250,246,237,0.3);
+  }
+  .footer-bottom span { color: var(--gold); }
+
+  /* ── UTILITY ── */
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin: 1.2rem 0;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .page.active .hero-content,
+  .page.active .hero-visual {
+    animation: fadeInUp 0.7s ease both;
+  }
+  .page.active .hero-visual { animation-delay: 0.15s; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav>
+  <div class="nav-logo">
+    Leadway Branding Consults
+    <span>with Coach Victoria</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')" class="active" id="nav-home">Home</a></li>
+    <li><a href="#" onclick="showPage('about')" id="nav-about">About</a></li>
+    <li><a href="#" onclick="showPage('services')" id="nav-services">Services</a></li>
+    <li><a href="#" onclick="showPage('testimonials')" id="nav-testimonials">Testimonials</a></li>
+    <li><a href="#" onclick="showPage('contact')" id="nav-contact">Contact</a></li>
+  </ul>
+  <a href="#" class="nav-cta" onclick="showPage('contact')">Work With Me</a>
+</nav>
+
+<!-- ═══════════ HOME ═══════════ -->
+<div id="home" class="page active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Coach Victoria &bull; Leadway Branding Consults</div>
+      <h1 class="hero-headline">
+        From Struggling<br>to <em>Seven Figures</em><br>Using <span class="gold">AI</span>
+      </h1>
+      <p class="hero-sub">
+        You did not build your business to stay invisible. I show Nigerian entrepreneurs how to use AI tools to create content that converts, build brands that attract, and generate income that lasts.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary" onclick="showPage('services')">Explore My Programs</a>
+        <a href="#" class="btn-outline" onclick="showPage('about')">Meet Coach Victoria</a>
+      </div>
+      <div class="hero-stat-row">
+        <div class="hero-stat">
+          <div class="num">910+</div>
+          <div class="label">Professionals Trained</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">5+</div>
+          <div class="label">Years Coaching</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">3</div>
+          <div class="label">Core Programs</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-quote">
+          "No one buys from a silent brand. AI just gives you no more excuses to be quiet."
+        </div>
+        <div class="hero-card-attr">
+          <div class="hero-card-avatar">V</div>
+          <div>
+            <div class="hero-card-name">Coach Victoria</div>
+            <div class="hero-card-title">Personal Branding Expert &bull; AI Educator</div>
+          </div>
+        </div>
+        <div class="hero-card-badges">
+          <span class="badge">TEDx Speaker</span>
+          <span class="badge">Published Author</span>
+          <span class="badge">AI Educator</span>
+          <span class="badge">Business Coach</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof Bar -->
+  <div class="proof-bar">
+    <div class="proof-item">Personal Branding Expert</div>
+    <div class="proof-item">AI Tools Educator</div>
+    <div class="proof-item">TEDx Speaker</div>
+    <div class="proof-item">Digital Products Coach</div>
+    <div class="proof-item">Content Strategy Specialist</div>
+  </div>
+
+  <!-- Intro Section -->
+  <section class="intro-section">
+    <div class="intro-text">
+      <div class="section-label">Why This Works</div>
+      <h2>You Have the Knowledge. AI Helps You Package It Into Income.</h2>
+      <p>Most entrepreneurs spend years working hard and still feel like the world does not know they exist. They post occasionally, hope for the best, and wonder why the money does not follow. The truth? <strong>Visibility is not luck. It is strategy.</strong></p>
+      <p>At Leadway Branding Consults, I teach you how to combine the power of your personal story with today's AI tools to create a brand that works for you even when you are not online.</p>
+      <p>Whether you are a stay-at-home mother, a market trader, a professional, or a business owner who is tired of being overlooked, this is where your transformation starts.</p>
+      <a href="#" class="btn-primary" onclick="showPage('about')">My Full Story</a>
+    </div>
+    <div class="intro-callout">
+      <blockquote>
+        "Don't be an Odogwu with an empty bank account. Your brand should open doors and fill your pocket. AI just makes that faster."
+      </blockquote>
+      <cite>Coach Victoria, Leadway Branding Consults</cite>
+    </div>
+  </section>
+
+  <!-- Services Preview -->
+  <section class="services-preview">
+    <div class="section-header">
+      <div class="section-label" style="color: var(--gold); border-color: var(--gold);">What I Offer</div>
+      <h2>Three Ways I Help You<br>Grow Your Income</h2>
+      <p>Each program is built around real results, practical tools, and a curriculum you can actually implement right away.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h3>AI Tools Training</h3>
+        <p>Learn to use AI tools to write content, build products, automate tasks, and grow your income faster than you ever thought possible. No tech background required.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✍️</div>
+        <h3>Content Strategy Coaching</h3>
+        <p>Stop posting random content that nobody sees. I will show you how to craft a content strategy that builds authority, grows your audience, and converts followers to buyers.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📦</div>
+        <h3>Digital Product Creation</h3>
+        <p>Package your knowledge into ebooks, courses, and training programs that sell while you sleep. I walk you through every step, from idea to sales page to first payment.</p>
+      </div>
+    </div>
+    <div class="services-cta">
+      <a href="#" class="btn-primary" onclick="showPage('services')">See All Programs</a>
+    </div>
+  </section>
+
+  <!-- CTA Strip -->
+  <section class="cta-strip">
+    <h2>Your Brand Is Talking Right Now.<br>What Is It Saying?</h2>
+    <p>If the answer is "not much," that changes today. Let us work together to build a brand that speaks clearly, attracts the right people, and generates income consistently.</p>
+    <a href="#" class="btn-dark" onclick="showPage('contact')">Let us Talk</a>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">Leadway Branding Consults</div>
+        <div class="tagline">with Coach Victoria</div>
+        <p>Helping Nigerian entrepreneurs use AI tools to build visible brands and generate income that lasts.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('about')">About</a>
+        <a onclick="showPage('services')">Services</a>
+        <a onclick="showPage('testimonials')">Testimonials</a>
+        <a onclick="showPage('contact')">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Programs</h5>
+        <a onclick="showPage('services')">AI Tools Training</a>
+        <a onclick="showPage('services')">Content Strategy</a>
+        <a onclick="showPage('services')">Digital Products</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">WhatsApp</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2025 <span>Leadway Branding Consults</span>. All rights reserved.</div>
+      <div>Built for Nigerian Entrepreneurs</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<div id="about" class="page">
+  <section class="about-hero">
+    <div class="section-label">The Woman Behind the Work</div>
+    <h1>Meet Coach Victoria</h1>
+    <p>Personal branding expert, AI educator, TEDx speaker, and the woman who will push you to finally be seen.</p>
+  </section>
+
+  <section class="about-bio">
+    <div class="bio-visual">
+      <div class="bio-photo-frame">
+        <div class="bio-avatar-large">V</div>
+        <h3>Coach Victoria</h3>
+        <p>Branding Expert &bull; AI Educator</p>
+        <div class="bio-stats-grid">
+          <div class="bio-stat-item"><div class="n">910+</div><div class="l">Trained</div></div>
+          <div class="bio-stat-item"><div class="n">5+</div><div class="l">Years</div></div>
+          <div class="bio-stat-item"><div class="n">3</div><div class="l">Programs</div></div>
+          <div class="bio-stat-item"><div class="n">TEDx</div><div class="l">Speaker</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="bio-content">
+      <div class="section-label">About Coach Victoria</div>
+      <h2>I Know What It Feels Like to Work Hard and Still Feel Invisible</h2>
+      <div class="divider"></div>
+      <p>There was a time when I had the skills, the drive, and the passion, but the money just was not matching my effort. I was working hard, showing up every day, but the world did not know I existed. My brand was silent. And a silent brand, as I now teach thousands of people, does not pay bills.</p>
+      <p>That season of struggle became my strongest teacher. It pushed me to understand branding not as a luxury for big corporations, but as a survival tool for every entrepreneur who wants to be taken seriously and paid accordingly.</p>
+      <p>Today, I am the founder of <strong>Leadway Branding Consults</strong> and <strong>Leadway Coaching Consults</strong>, where I have trained over <strong>910 professionals</strong> across Nigeria and Africa to build personal brands that attract clients, command respect, and generate consistent income.</p>
+      <div class="highlight-box">
+        <p>When AI arrived and changed the game, I did not just adapt. I became the person who teaches others how to use it. Through my SMART AI Digital Skills brand, I have helped home-based entrepreneurs, nursing mothers, and small business owners understand that AI is not a threat to their livelihood. It is the shortcut they have been waiting for.</p>
+      </div>
+      <p>I am also a published author with books including <em>Personal Branding Blueprint</em> and <em>Implementation Pills</em>, a TEDx speaker, and a woman who believes deeply that financial independence is the foundation of confidence for every woman in Africa.</p>
+      <p>If you are ready to stop being the best-kept secret in your industry and start building a brand that speaks, sells, and scales, you are in the right place.</p>
+      <br>
+      <a href="#" class="btn-primary" onclick="showPage('services')">See How We Work Together</a>
+    </div>
+  </section>
+
+  <section class="credentials">
+    <h2>Expertise &amp; Credentials</h2>
+    <div class="cred-grid">
+      <div class="cred-card">
+        <div class="icon">🎤</div>
+        <h4>TEDx Speaker</h4>
+        <p>Delivered a TEDx talk on personal branding and financial independence for African women.</p>
+      </div>
+      <div class="cred-card">
+        <div class="icon">📚</div>
+        <h4>Published Author</h4>
+        <p>Author of multiple books including Personal Branding Blueprint and Implementation Pills.</p>
+      </div>
+      <div class="cred-card">
+        <div class="icon">🤖</div>
+        <h4>AI Educator</h4>
+        <p>Founder of SMART AI Digital Skills, teaching entrepreneurs to use AI for business growth.</p>
+      </div>
+      <div class="cred-card">
+        <div class="icon">🏆</div>
+        <h4>Business Coach</h4>
+        <p>Over 910 professionals trained across Nigeria and Africa through group and private coaching.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <h2>Ready to Work With Coach Victoria?</h2>
+    <p>Whether you need one-on-one coaching, a group training, or a full brand transformation, there is a program designed for exactly where you are right now.</p>
+    <a href="#" class="btn-dark" onclick="showPage('contact')">Get Started Today</a>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">Leadway Branding Consults</div>
+        <div class="tagline">with Coach Victoria</div>
+        <p>Helping Nigerian entrepreneurs use AI tools to build visible brands and generate income that lasts.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('about')">About</a>
+        <a onclick="showPage('services')">Services</a>
+        <a onclick="showPage('testimonials')">Testimonials</a>
+        <a onclick="showPage('contact')">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Programs</h5>
+        <a onclick="showPage('services')">AI Tools Training</a>
+        <a onclick="showPage('services')">Content Strategy</a>
+        <a onclick="showPage('services')">Digital Products</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">WhatsApp</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2025 <span>Leadway Branding Consults</span>. All rights reserved.</div>
+      <div>Built for Nigerian Entrepreneurs</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════ SERVICES ═══════════ -->
+<div id="services" class="page">
+  <section class="services-hero">
+    <div class="section-label">Programs &amp; Training</div>
+    <h1>Choose Your Path to Growth</h1>
+    <p>Each program is practical, implementation-focused, and built specifically for the Nigerian entrepreneur who is ready to earn more and be seen more.</p>
+  </section>
+
+  <!-- Service 1 -->
+  <section class="service-detail">
+    <div class="service-detail-text">
+      <span class="service-num">01</span>
+      <div class="section-label">Program One</div>
+      <h2>AI Tools Training</h2>
+      <div class="divider"></div>
+      <p>You have heard about AI. You may have even tried a few tools and felt confused. This program changes that completely. I will take you from zero understanding to confidently using AI tools to write content, research your market, design materials, build digital products, and grow your income.</p>
+      <p>This is not a technical course. You do not need any coding background or tech experience. All you need is a phone or laptop and the willingness to learn something that will change how you work forever.</p>
+      <div class="service-includes">
+        <h4>What Is Covered</h4>
+        <div class="include-item">Introduction to the most useful AI tools for Nigerian entrepreneurs</div>
+        <div class="include-item">Using AI to create content for Instagram, WhatsApp, and LinkedIn</div>
+        <div class="include-item">Building digital products and sales assets with AI assistance</div>
+        <div class="include-item">AI prompting strategies that actually produce good results</div>
+        <div class="include-item">How to save hours every week by automating repetitive tasks</div>
+      </div>
+      <a href="#" class="btn-primary" onclick="showPage('contact')">Enrol Now</a>
+    </div>
+    <div class="service-visual-block">
+      <div class="service-visual-icon">🤖</div>
+      <h3>AI Tools Training</h3>
+      <p>Designed for entrepreneurs, home-based business owners, and professionals who want to use technology as a competitive advantage, not a source of stress.</p>
+      <p>Delivered via WhatsApp and Telegram for maximum convenience. You learn at your own pace, in your own space.</p>
+      <span class="price-tag">Available Online</span>
+    </div>
+  </section>
+
+  <!-- Service 2 -->
+  <section class="service-detail reverse">
+    <div class="service-detail-text">
+      <span class="service-num">02</span>
+      <div class="section-label">Program Two</div>
+      <h2>Content Strategy Coaching</h2>
+      <div class="divider"></div>
+      <p>Posting without a strategy is just noise. A lot of entrepreneurs are on social media every day and still not seeing results because they are creating content without a clear goal, a clear audience, or a clear message.</p>
+      <p>This coaching program teaches you how to build a content strategy that grows your audience, positions you as an authority in your field, and most importantly, turns your followers into paying customers.</p>
+      <div class="service-includes">
+        <h4>What Is Covered</h4>
+        <div class="include-item">Identifying your brand voice and content pillars</div>
+        <div class="include-item">Creating a 30-day content calendar that drives engagement</div>
+        <div class="include-item">Writing captions and stories that make people want to buy</div>
+        <div class="include-item">Using AI to batch-create content in half the time</div>
+        <div class="include-item">Converting content engagement into actual sales conversations</div>
+      </div>
+      <a href="#" class="btn-primary" onclick="showPage('contact')">Book a Session</a>
+    </div>
+    <div class="service-visual-block">
+      <div class="service-visual-icon">✍️</div>
+      <h3>Content Strategy Coaching</h3>
+      <p>This is for the entrepreneur who is tired of being consistent and still seeing no results. We fix your strategy so that every post you make works harder for your business.</p>
+      <p>Available as a one-on-one intensive coaching engagement or as part of a group coaching programme.</p>
+      <span class="price-tag">1-on-1 &amp; Group Available</span>
+    </div>
+  </section>
+
+  <!-- Service 3 -->
+  <section class="service-detail">
+    <div class="service-detail-text">
+      <span class="service-num">03</span>
+      <div class="section-label">Program Three</div>
+      <h2>Digital Product Creation</h2>
+      <div class="divider"></div>
+      <p>You already have knowledge that someone is willing to pay for. The question is whether you have packaged it in a way that allows you to sell it. Digital products, things like ebooks, courses, templates, and training guides, are one of the fastest ways to generate income without trading your time for money.</p>
+      <p>In this program, I walk you through the entire process: finding the right idea, packaging it professionally, writing copy that sells, and launching it to the right audience.</p>
+      <div class="service-includes">
+        <h4>What Is Covered</h4>
+        <div class="include-item">How to identify your most profitable knowledge area</div>
+        <div class="include-item">Creating ebooks, mini-courses, and digital guides from scratch</div>
+        <div class="include-item">Writing sales pages and product descriptions that convert</div>
+        <div class="include-item">Setting up payment systems and delivery workflows</div>
+        <div class="include-item">Marketing your digital products to your existing audience</div>
+      </div>
+      <a href="#" class="btn-primary" onclick="showPage('contact')">Get Started</a>
+    </div>
+    <div class="service-visual-block">
+      <div class="service-visual-icon">📦</div>
+      <h3>Digital Product Creation</h3>
+      <p>This is for anyone who has ever said "I should write that ebook" or "I should create a course" and never followed through. This time, we do it together, step by step, until it is done and selling.</p>
+      <p>You will leave this program with a finished product, a sales page, and a clear plan for your first launch.</p>
+      <span class="price-tag">Full Product Launch Support</span>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <h2>Not Sure Which Program Is Right for You?</h2>
+    <p>Send me a message and let us talk about where you are and where you want to be. We will figure out the best starting point together.</p>
+    <a href="#" class="btn-dark" onclick="showPage('contact')">Send a Message</a>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">Leadway Branding Consults</div>
+        <div class="tagline">with Coach Victoria</div>
+        <p>Helping Nigerian entrepreneurs use AI tools to build visible brands and generate income that lasts.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('about')">About</a>
+        <a onclick="showPage('services')">Services</a>
+        <a onclick="showPage('testimonials')">Testimonials</a>
+        <a onclick="showPage('contact')">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Programs</h5>
+        <a onclick="showPage('services')">AI Tools Training</a>
+        <a onclick="showPage('services')">Content Strategy</a>
+        <a onclick="showPage('services')">Digital Products</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">WhatsApp</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2025 <span>Leadway Branding Consults</span>. All rights reserved.</div>
+      <div>Built for Nigerian Entrepreneurs</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════ TESTIMONIALS ═══════════ -->
+<div id="testimonials" class="page">
+  <section class="testi-hero">
+    <div class="section-label">Real Results, Real People</div>
+    <h1>What My Students Are Saying</h1>
+    <p>Over 910 professionals trained. These are just a few of the stories that remind me why this work matters.</p>
+  </section>
+
+  <section class="testimonials-grid">
+    <div class="testi-card featured">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Before I joined Coach Victoria's AI training, I was posting content every day and getting almost nothing in return. Within three weeks of applying what she taught me, I made my first ₦50,000 from a digital product I built during the program. She does not just teach theory. She stays with you until you actually produce a result. I have never had a coach who was this committed to my success.</p>
+      <div class="testi-person">
+        <div class="testi-avatar">A</div>
+        <div>
+          <div class="testi-name">Adaeze Nwosu</div>
+          <div class="testi-role" style="color: rgba(201,168,76,0.6);">Online Entrepreneur, Enugu</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Coach Victoria changed how I see my own value. I thought I did not have enough to sell. She showed me I was sitting on a goldmine and just needed to package it properly. My ebook sold out in the first week.</p>
+      <div class="testi-person">
+        <div class="testi-avatar">F</div>
+        <div>
+          <div class="testi-name">Fatima Lawal</div>
+          <div class="testi-role">Business Owner, Abuja</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">I am a stay-at-home mother and I always felt like the online business world was not for me. Coach Victoria's training opened my eyes. I now run a small digital product business from my phone and earn my own income every month.</p>
+      <div class="testi-person">
+        <div class="testi-avatar">C</div>
+        <div>
+          <div class="testi-name">Chioma Eze</div>
+          <div class="testi-role">Home-Based Entrepreneur, Lagos</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">The content strategy coaching was exactly what my business needed. I stopped posting randomly and started posting with purpose. My engagement tripled and I got my first consulting client from Instagram within a month.</p>
+      <div class="testi-person">
+        <div class="testi-avatar">T</div>
+        <div>
+          <div class="testi-name">Tope Adesanya</div>
+          <div class="testi-role">Consultant, Ibadan</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">I came into the AI training thinking it would be too technical for me. Coach Victoria makes it so easy and so practical. I now use AI to write my captions, create my graphics, and even draft my DMs. It has saved me so many hours.</p>
+      <div class="testi-person">
+        <div class="testi-avatar">B</div>
+        <div>
+          <div class="testi-name">Blessing Okafor</div>
+          <div class="testi-role">Fashion Entrepreneur, Port Harcourt</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Coach Victoria is the real deal. She speaks your language, she understands the Nigerian market, and she gives you tools that actually work here. My personal brand is completely different from what it was a year ago.</p>
+      <div class="testi-person">
+        <div class="testi-avatar">K</div>
+        <div>
+          <div class="testi-name">Kemi Adeyemi</div>
+          <div class="testi-role">Corporate Professional, Lagos</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="results-strip">
+    <h2>The Numbers Speak for Themselves</h2>
+    <div class="results-grid">
+      <div class="result-item"><div class="rn">910+</div><div class="rl">Professionals Trained</div></div>
+      <div class="result-item"><div class="rn">5+</div><div class="rl">Years of Coaching</div></div>
+      <div class="result-item"><div class="rn">3</div><div class="rl">Core Programs</div></div>
+      <div class="result-item"><div class="rn">100%</div><div class="rl">Practical Focus</div></div>
+    </div>
+  </section>
+
+  <section class="cta-strip" style="background: var(--deep); background-image: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 60%);">
+    <h2 style="color: var(--gold);">Your Story Could Be Next</h2>
+    <p style="color: rgba(250,246,237,0.65);">Join over 910 professionals who have already taken the step. There is a program ready for you right now.</p>
+    <a href="#" class="btn-primary" onclick="showPage('contact')">Start Your Journey</a>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">Leadway Branding Consults</div>
+        <div class="tagline">with Coach Victoria</div>
+        <p>Helping Nigerian entrepreneurs use AI tools to build visible brands and generate income that lasts.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('about')">About</a>
+        <a onclick="showPage('services')">Services</a>
+        <a onclick="showPage('testimonials')">Testimonials</a>
+        <a onclick="showPage('contact')">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Programs</h5>
+        <a onclick="showPage('services')">AI Tools Training</a>
+        <a onclick="showPage('services')">Content Strategy</a>
+        <a onclick="showPage('services')">Digital Products</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">WhatsApp</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2025 <span>Leadway Branding Consults</span>. All rights reserved.</div>
+      <div>Built for Nigerian Entrepreneurs</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<div id="contact" class="page">
+  <section class="contact-hero">
+    <div class="section-label">Let us Talk</div>
+    <h1>Ready to Get Started?</h1>
+    <p>Fill in the form below and I will get back to you within 24 hours. No pressure, no complicated process. Just a conversation about where you are and where you want to go.</p>
+  </section>
+
+  <section class="contact-body">
+    <div class="contact-info">
+      <div class="section-label">Get in Touch</div>
+      <h2>I Read Every Message Personally</h2>
+      <p>Whether you have questions about a program, want to discuss a private coaching arrangement, or just need to figure out which program is right for you, send me a message and I will make sure you get a proper answer.</p>
+      <div class="contact-channels">
+        <div class="channel">
+          <div class="channel-icon">📱</div>
+          <div>
+            <div class="channel-label">WhatsApp</div>
+            <div class="channel-value">Available for quick enquiries</div>
+          </div>
+        </div>
+        <div class="channel">
+          <div class="channel-icon">📧</div>
+          <div>
+            <div class="channel-label">Email</div>
+            <div class="channel-value">leadwaybranding@gmail.com</div>
+          </div>
+        </div>
+        <div class="channel">
+          <div class="channel-icon">📍</div>
+          <div>
+            <div class="channel-label">Location</div>
+            <div class="channel-value">Nigeria — serving clients across Africa</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-quote">
+        <p>"The first step is never perfect. It is just the beginning. Reach out and let us figure out the rest together."</p>
+        <cite>Coach Victoria</cite>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap">
+      <h3>Send a Message</h3>
+      <p>I will respond within 24 hours on business days.</p>
+      <div id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="Your first name">
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" placeholder="Your last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number (WhatsApp)</label>
+          <input type="tel" id="phone" placeholder="+234 800 000 0000">
+        </div>
+        <div class="form-group">
+          <label for="program">Program of Interest</label>
+          <select id="program">
+            <option value="" disabled selected>Select a program</option>
+            <option>AI Tools Training</option>
+            <option>Content Strategy Coaching</option>
+            <option>Digital Product Creation</option>
+            <option>I need help deciding</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Tell Me About Your Business</label>
+          <textarea id="message" placeholder="What do you do, where are you stuck, and what result are you hoping for?"></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Send My Message</button>
+        <p class="form-note">Your information is private and will never be shared with anyone.</p>
+      </div>
+      <div class="success-message" id="success-msg">
+        <div class="checkmark">✓</div>
+        <h4>Message Received</h4>
+        <p>Thank you for reaching out. Coach Victoria will personally review your message and respond within 24 hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">Leadway Branding Consults</div>
+        <div class="tagline">with Coach Victoria</div>
+        <p>Helping Nigerian entrepreneurs use AI tools to build visible brands and generate income that lasts.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('about')">About</a>
+        <a onclick="showPage('services')">Services</a>
+        <a onclick="showPage('testimonials')">Testimonials</a>
+        <a onclick="showPage('contact')">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Programs</h5>
+        <a onclick="showPage('services')">AI Tools Training</a>
+        <a onclick="showPage('services')">Content Strategy</a>
+        <a onclick="showPage('services')">Digital Products</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">WhatsApp</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2025 <span>Leadway Branding Consults</span>. All rights reserved.</div>
+      <div>Built for Nigerian Entrepreneurs</div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.getElementById('nav-' + id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return false;
+  }
+
+  function submitForm() {
+    const name = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    if (!name || !email) {
+      alert('Please fill in at least your name and email to send a message.');
+      return;
+    }
+    document.getElementById('contact-form').style.display = 'none';
+    document.getElementById('success-msg').style.display = 'block';
+  }
+</script>
+</body>
+</html>
